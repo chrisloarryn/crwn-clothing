@@ -13,14 +13,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ imageUrl, size, title }) => (
     <div
       className="background-image"
       style={{
-        backgroundImage: `url(${imageUrl})`
-      }}
-    >
-
-    </div>
-    <div className='content'>
-      <h1 className='title'>{title.toUpperCase()}</h1>
-      <span className='subtitle'>SHOP NOW</span>
+        backgroundImage: `url(${imageUrl})`,
+      }}></div>
+    <div className="content">
+      <h1 className="title">{title.toUpperCase()}</h1>
+      <span className="subtitle">SHOP NOW</span>
     </div>
   </div>
 )

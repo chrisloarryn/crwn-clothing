@@ -4,7 +4,7 @@ import HomePage from './pages/homepage/homepage.component'
 
 const App: React.FC = () => {
   return (
-    <div className='App'>
+    <div className="App">
       <HomePage />
     </div>
   )
