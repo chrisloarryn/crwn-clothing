@@ -7,7 +7,7 @@ import { sections as sectionsMock } from './../../mock/directory.data'
 
 import './directory.styles.scss'
 
-const Directory = () => {
+const Directory: React.FC = () => {
   const [sections] = React.useState<MenuItemI[]>(sectionsMock)
   return (
     <div className='directory-menu'>
