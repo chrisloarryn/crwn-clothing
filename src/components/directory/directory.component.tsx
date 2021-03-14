@@ -11,13 +11,8 @@ const Directory: React.FC = () => {
   const [sections] = React.useState<MenuItemI[]>(sectionsMock)
   return (
     <div className="directory-menu">
-      {sections.map(({ id, imageUrl, title, size }: MenuItemI) => (
-        <MenuItem
-          key={id}
-          imageUrl={imageUrl as string}
-          title={title}
-          size={size as string}
-        />
+      {sections.map(({ id, ...otherSectionProps }: MenuItemI) => (
+        <MenuItem key={id} {...otherSectionProps} />
       ))}
     </div>
   )
