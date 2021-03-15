@@ -1,17 +1,14 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export type ITarget = {
-  name?: string | any
-  _id?: string
-  id?: string
-  value?: string
+  name: string
+  value: string | number | boolean
 }
 
 export type IUseForm = [
-  any,
-  (value: any) => void,
-  (value?: any) => void,
-  (value: any) => void,
+  Record<string, unknown>,
+  ({ target }: React.BaseSyntheticEvent) => void,
+  (newFormState?: Record<string, unknown>) => void,
 ]
 
 
@@ -26,20 +23,20 @@ export type IUseForm = [
  * @return {*} [values, setValues, resetValues] {IUseForm}
  *
  */
-export const useForm = (_initialState: any): IUseForm => {
-  const [initialState, setInitialState] = useState(_initialState)
-  const [values, setValues] = useState(_initialState)
+export const useForm = (initialState: Record<string, unknown>): IUseForm => {
+  const [values, setValues] = useState(initialState)
 
   const reset = (newFormState = initialState) => {
     setValues(newFormState)
   }
 
-  const handleInputChange = ({ target }: { target: ITarget }) => {
+  const handleInputChange = ({ target }: React.BaseSyntheticEvent) => {
+    console.log(target)
     setValues({
       ...values,
-      [target.name]: target.value,
+      [target.name as string]: target.value,
     })
   }
 
-  return [values, handleInputChange, reset, setInitialState]
+  return [values, handleInputChange, reset]
 }
