@@ -1,7 +1,7 @@
 import React from 'react'
 import { SHOP_DATA, ShopDataI } from 'mock/shop.data'
 
-import CollectionPreview from 'components/preview-collection/preview-collection.component'
+import CollectionPreview from './.././../components/collection-preview/collection-preview.component'
 
 const ShopPage: React.FC = () => {
   const [collections, setCollections] = React.useState<ShopDataI[]>(SHOP_DATA)
