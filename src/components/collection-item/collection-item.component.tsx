@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { ShopDataItemI } from 'mock/shop.data'
 
 import './collection-item.styles.scss'

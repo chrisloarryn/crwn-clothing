@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { ShopDataI, ShopDataItemI } from 'mock/shop.data'
 
 import CollectionItem from 'components/collection-item/collection-item.component'
