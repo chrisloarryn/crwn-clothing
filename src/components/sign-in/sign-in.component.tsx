@@ -1,6 +1,12 @@
 import * as React from 'react'
 import { useForm } from 'hooks/useFormHook'
 
+import CustomButton from 'components/custom-button/custom-button.component'
+
+import FormInput from './../form-input/form-input.component'
+
+import './sign-in.styles.scss'
+
 const SignIn: React.FC = () => {
   const [values, setValues] = useForm({
     email: '',
@@ -17,22 +23,22 @@ const SignIn: React.FC = () => {
       <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
-        <input
+        <FormInput
           name="email"
+          label="email"
           required
-          onChange={setValues}
+          handleChange={setValues}
           type="email"
           value={values.email as string}
         />
-        <label>Email</label>
-        <input
+        <FormInput
           name="password"
+          label="password"
           type="password"
-          onChange={setValues}
+          handleChange={setValues}
           value={values.password as string}
           required />
-        <label>Password</label>
-        <input type="submit" value="Submit Form"/>
+        <CustomButton type="submit">Sign in</CustomButton>
       </form>
     </div>
   )

@@ -7,6 +7,8 @@ import Header from 'components/header/header.component'
 
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component'
 
+import './App.scss'
+
 const App: React.FC = () => {
   return (
     <div className="App">
