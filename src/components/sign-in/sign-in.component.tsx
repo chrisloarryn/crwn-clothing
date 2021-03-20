@@ -3,6 +3,8 @@ import { useForm } from 'hooks/useFormHook'
 
 import CustomButton from 'components/custom-button/custom-button.component'
 
+import { signIgnWithGoogle } from '../../firebase/firebase.utils'
+
 import FormInput from './../form-input/form-input.component'
 
 import './sign-in.styles.scss'
@@ -37,8 +39,14 @@ const SignIn: React.FC = () => {
           type="password"
           handleChange={setValues}
           value={values.password as string}
-          required />
-        <CustomButton type="submit">Sign in</CustomButton>
+          required
+        />
+        <div className="buttons">
+          <CustomButton type="submit">Sign in</CustomButton>
+          <CustomButton onClick={signIgnWithGoogle} isGoogleSignIn>
+            Sign In With Google
+          </CustomButton>
+        </div>
       </form>
     </div>
   )

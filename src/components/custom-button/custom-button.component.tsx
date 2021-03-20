@@ -4,20 +4,24 @@ import './custom-button.styles.scss'
 
 interface CustomButtonProps {
   children: React.ReactNode
-  type: 'button' | 'submit' | 'reset' | undefined
+  type?: 'button' | 'submit' | 'reset' | undefined
+  onClick?: () => Promise<unknown>
+  isGoogleSignIn?: boolean
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
   children,
   type,
+  onClick,
+  isGoogleSignIn,
   ...rest
 }) => {
   return (
     <button
-      className="custom-button"
+      className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
       type={type}
-      {...rest}
-    >
+      onClick={onClick}
+      {...rest}>
       {children}
     </button>
   )
