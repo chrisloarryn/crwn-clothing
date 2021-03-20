@@ -1,12 +1,14 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import { FirebaseUser } from 'types/user-types'
 
 import { auth } from './../../firebase/firebase.utils'
 import Logo from './../logo/logo.component'
 
 import './header.styles.scss'
-interface HeaderProps {
-  currentUser: unknown
+
+type HeaderProps = {
+  currentUser: FirebaseUser
 }
 
 const Header: React.FC<HeaderProps> = ({ currentUser }) => {
