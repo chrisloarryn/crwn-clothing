@@ -3,21 +3,26 @@ import { useForm } from 'hooks/useFormHook'
 
 import CustomButton from 'components/custom-button/custom-button.component'
 
-import { signIgnWithGoogle } from '../../firebase/firebase.utils'
+import { auth, signIgnWithGoogle } from '../../firebase/firebase.utils'
 
 import FormInput from './../form-input/form-input.component'
 
 import './sign-in.styles.scss'
 
 const SignIn: React.FC = () => {
-  const [values, setValues] = useForm({
+  const [values, setValues, resetValues] = useForm({
     email: '',
     password: '',
   })
-  const handleSubmit = (event: React.BaseSyntheticEvent) => {
+  const handleSubmit = async (event: React.BaseSyntheticEvent) => {
     event.preventDefault()
-    console.log(event)
-    console.log(values)
+    const { email, password } = values
+    try {
+      await auth.signInWithEmailAndPassword(email as string, password as string)
+      resetValues()
+    } catch (err) {
+      console.error(err)
+    }
   }
   return (
     <div className="sign-in">
@@ -43,7 +48,11 @@ const SignIn: React.FC = () => {
         />
         <div className="buttons">
           <CustomButton type="submit">Sign in</CustomButton>
-          <CustomButton onClick={signIgnWithGoogle} isGoogleSignIn>
+          <CustomButton
+            isGoogleSignIn
+            onClick={signIgnWithGoogle}
+            type="button"
+          >
             Sign In With Google
           </CustomButton>
         </div>
