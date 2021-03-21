@@ -12,7 +12,7 @@ type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = ({ currentUser }) => {
-  const handleSignOut = () => auth.signOut()
+
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
           CONTACT
         </Link>
         {currentUser ? (
-          <div className="option" onClick={handleSignOut}>
+          <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
         ) : (
